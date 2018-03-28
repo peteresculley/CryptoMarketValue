@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            function getCryptoValue() {
+                let currency = $('#currency').val();
+                $.get("/api/getCryptoValue", { currency: currency }, (data, status) => {
+                    if(data) {
+                        if(data.error) {
+                            $("#result").text(data.error);
+                        } else {
+                            $("#result").text(currency + " value: $" + data.value);
+                        }
+                    } else {
+                        $("#result").text("call to getCryptoValue failed");
+                    }
+                });
+            }
+            function getCryptoMarketValue() {
+                let currency = $('#currency').val();
+                $.get("/api/getCryptoMarketValue", { currency: currency }, (data, status) => {
+                    if(data) {
+                        if(data.error) {
+                            $("#result").text(data.error);
+                        } else {
+                            $("#result").text(currency + " market value: $" + data.marketValue);
+                        }
+                    } else {
+                        $("#result").text("call to getCryptoMarketValue failed");
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        Find the value and market cap of any Crypto Currency
+        <br/><br/>
+        <input id="currency" type="text" name="currency" placeholder="Cryptocurrency name" />
+        <br/>
+        <button id="cryptoValueButton" onclick="javascript: getCryptoValue();">Get Value</button>
+        <button id="cryptoMarketValueButton" onclick="javascript: getCryptoMarketValue();">Get Market Value</button>
+        <br/><br/><br/>
+        <b id="result">Result here!</b>
+    </body>
+</html>
