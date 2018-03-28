@@ -3,3 +3,4 @@ NodeJS version which allows to input the name of a cryptocurrency and to display
 
 # Instuctions
 After pulling, make a copy of example.env and rename it .env
+  To run use command - node server.js
