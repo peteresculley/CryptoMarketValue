@@ -33,7 +33,9 @@ const CryptoInfo = {
             }
         });
     },
+    /* test-code */
     __test_only__: {cleanCurrency, getAPIUrl, createInfoObject}
+    /* end-test-code */
 };
 
 module.exports = CryptoInfo;
